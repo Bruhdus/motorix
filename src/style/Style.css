@@ -1,0 +1,29 @@
+.post-flat-img {
+    position: relative;
+}
+
+.img-delete-button {
+    display: none;
+}
+
+.post-flat-img:hover .img-delete-button {
+    /* Display the delete button when hovering over the image container */
+    display: block;
+}
+
+.btn-outline-primary {
+    color: #009FB7;
+    background-color: transparent;
+    border-color: #009FB7;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #009FB7;
+    border-color: #009FB7;
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
