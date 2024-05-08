@@ -1,4 +1,4 @@
-export const primaryColor = '#009FB7'
+export const primaryColor = '#0F52BA' // sapphire blue or indigo purple #4B0082
 
 export const primaryButton = {
     backgroundColor: primaryColor,

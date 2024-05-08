@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
+import { getFunctions, connectFunctionsEmulator } from 'firebase/functions';
 
 const app = initializeApp({
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -16,5 +17,7 @@ const app = initializeApp({
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
+const cloudFunctions = getFunctions(app);
+connectFunctionsEmulator(cloudFunctions, "127.0.0.1", 5001);
 
-export { auth, db, storage };
+export { auth, db, storage, cloudFunctions };

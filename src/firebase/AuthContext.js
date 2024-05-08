@@ -9,7 +9,8 @@ import {
     updatePassword as firebaseUpdatePassword,
     signInWithRedirect,
     GoogleAuthProvider,
-    reauthenticateWithCredential
+    reauthenticateWithCredential,
+    sendEmailVerification
 } from "firebase/auth";
 
 const AuthContext = React.createContext()
@@ -25,10 +26,8 @@ export function AuthProvider({ children }) {
 
     async function signup(email, password, name) {
         await createUserWithEmailAndPassword(auth, email, password)
-        if (auth.currentUser != null) {
-            await updateProfile(auth.currentUser, { displayName: name })
-            console.log(auth.currentUser)
-        }
+        await sendEmailVerification(auth.currentUser)
+        await updateProfile(auth.currentUser, { displayName: name })
     }
 
     async function signin(email, password) {

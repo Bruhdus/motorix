@@ -1,0 +1,297 @@
+[debug] [2024-05-08T04:43:39.545Z] ----------------------------------------------------------------------
+[debug] [2024-05-08T04:43:39.546Z] Command:       /Users/jee/.nvm/versions/node/v20.12.2/bin/node /Users/jee/.nvm/versions/node/v20.12.2/bin/firebase emulators:start
+[debug] [2024-05-08T04:43:39.546Z] CLI Version:   13.7.5
+[debug] [2024-05-08T04:43:39.547Z] Platform:      darwin
+[debug] [2024-05-08T04:43:39.547Z] Node Version:  v20.12.2
+[debug] [2024-05-08T04:43:39.547Z] Time:          Wed May 08 2024 16:43:39 GMT+1200 (New Zealand Standard Time)
+[debug] [2024-05-08T04:43:39.547Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-05-08T04:43:39.614Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-05-08T04:43:39.615Z] > authorizing via signed-in user (parkjeesung77@gmail.com)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2024-05-08T04:43:39.711Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-05-08T04:43:39.711Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2024-05-08T04:43:39.714Z] [hub] writing locator at /var/folders/qf/0m9z8j2j29n6n46wkm203n8m0000gn/T/hub-motorix-28ab2.json
+[debug] [2024-05-08T04:43:39.778Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-05-08T04:43:39.778Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-05-08T04:43:39.778Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, hosting, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, hosting, pubsub, storage\u001b[22m"}}
+[debug] [2024-05-08T04:43:39.780Z] defaultcredentials: writing to file /Users/jee/.config/firebase/parkjeesung77_gmail_com_application_default_credentials.json
+[debug] [2024-05-08T04:43:39.782Z] Setting GAC to /Users/jee/.config/firebase/parkjeesung77_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/jee/.config/firebase/parkjeesung77_gmail_com_application_default_credentials.json"}}
+[debug] [2024-05-08T04:43:39.783Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/motorix-28ab2/adminSdkConfig [none]
+[debug] [2024-05-08T04:43:40.621Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/motorix-28ab2/adminSdkConfig 200
+[debug] [2024-05-08T04:43:40.622Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/motorix-28ab2/adminSdkConfig {"projectId":"motorix-28ab2","storageBucket":"motorix-28ab2.appspot.com","locationId":"us-central"}
+[debug] [2024-05-08T04:43:40.644Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-05-08T04:43:40.644Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2024-05-08T04:43:40.644Z] Starting Emulator UI with command {"binary":"node","args":["/Users/jee/.cache/firebase/emulators/ui-v1.11.8/server/server.mjs"],"optionalArgs":[],"joinArgs":false,"shell":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/jee/.cache/firebase/emulators/ui-v1.11.8/server/server.mjs\"],\"optionalArgs\":[],\"joinArgs\":false,\"shell\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2024-05-08T04:43:40.743Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2024-05-08T04:43:40.743Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] i  functions: Watching "/Users/jee/Desktop/Motorix/motorix/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/jee/Desktop/Motorix/motorix/functions\" for Cloud Functions..."}}
+[debug] [2024-05-08T04:43:40.911Z] Validating nodejs source
+[warn] ⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] ⚠  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2024-05-08T04:43:42.036Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@google-cloud/secret-manager": "^5.5.0",
+    "cors": "^2.8.5",
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1",
+    "nodemailer": "^6.9.13"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-05-08T04:43:42.036Z] Building nodejs source
+[debug] [2024-05-08T04:43:42.036Z] Failed to find version of module node: reached end of search path /Users/jee/Desktop/Motorix/motorix/functions/node_modules
+[info] ✔  functions: Using node@20 from host. 
+[debug] [2024-05-08T04:43:42.038Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-05-08T04:43:42.043Z] Found firebase-functions binary at '/Users/jee/Desktop/Motorix/motorix/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8233
+
+[debug] [2024-05-08T04:43:42.543Z] Got response from /__/functions.yaml {"endpoints":{"sendMail":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"sendMail"},"verifyCode":{"platform":"gcfv1","labels":{},"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"callableTrigger":{},"entryPoint":"verifyCode"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] ✔  functions: Loaded functions definitions from source: sendMail, verifyCode. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: sendMail, verifyCode."}}
+[info] ✔  functions[us-central1-sendMail]: http function initialized (http://127.0.0.1:5001/motorix-28ab2/us-central1/sendMail). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/motorix-28ab2/us-central1/sendMail)."}}
+[info] ✔  functions[us-central1-verifyCode]: http function initialized (http://127.0.0.1:5001/motorix-28ab2/us-central1/verifyCode). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/motorix-28ab2/us-central1/verifyCode)."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2024-05-08T04:44:55.569Z] [work-queue] {"queuedWork":["/motorix-28ab2/us-central1/sendMail-2024-05-08T04:44:55.569Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2024-05-08T04:44:55.571Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/motorix-28ab2/us-central1/sendMail-2024-05-08T04:44:55.569Z"],"workRunningCount":1}
+[debug] [2024-05-08T04:44:55.572Z] Accepted request GET /motorix-28ab2/us-central1/sendMail?email=cileni3595@agafx.com --> us-central1-sendMail
+[debug] [2024-05-08T04:44:55.577Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2024-05-08T04:44:55.578Z] [functions] Got req.url=/motorix-28ab2/us-central1/sendMail?email=cileni3595@agafx.com, mapping to path=/?email=cileni3595@agafx.com {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/motorix-28ab2/us-central1/sendMail?email=cileni3595@agafx.com, mapping to path=/?email=cileni3595@agafx.com"}}
+[debug] [2024-05-08T04:44:55.585Z] [worker-pool] addWorker(us-central1-sendMail) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-sendMail)"}}
+[debug] [2024-05-08T04:44:55.586Z] [worker-pool] Adding worker with key us-central1-sendMail, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-sendMail, total=1"}}
+[debug] [2024-05-08T04:44:56.203Z] [runtime-status] [5062] Resolved module firebase-admin {"declared":true,"installed":true,"version":"11.11.1","resolution":"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[runtime-status] [5062] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"11.11.1\",\"resolution\":\"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2024-05-08T04:44:56.203Z] [runtime-status] [5062] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.9.0","resolution":"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-functions/lib/v1/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[runtime-status] [5062] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.9.0\",\"resolution\":\"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-functions/lib/v1/index.js\"}"}}
+[debug] [2024-05-08T04:44:56.203Z] [runtime-status] [5062] Found local functions config: /Users/jee/Desktop/Motorix/motorix/functions/.runtimeconfig.json {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[runtime-status] [5062] Found local functions config: /Users/jee/Desktop/Motorix/motorix/functions/.runtimeconfig.json"}}
+[debug] [2024-05-08T04:44:56.204Z] [runtime-status] [5062] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[runtime-status] [5062] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2024-05-08T04:44:56.204Z] [runtime-status] [5062] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.9.0","resolution":"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-functions/lib/v1/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[runtime-status] [5062] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.9.0\",\"resolution\":\"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-functions/lib/v1/index.js\"}"}}
+[debug] [2024-05-08T04:44:56.339Z] [runtime-status] [5062] Checked functions.config() {"config":{"nodemailer":{"email":{"user":"parkjeesung77@gmail.com","pass":"hzoecuzsehpyfimb"},"host":"smtp.gmail.com"}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[runtime-status] [5062] Checked functions.config() {\"config\":{\"nodemailer\":{\"email\":{\"user\":\"parkjeesung77@gmail.com\",\"pass\":\"hzoecuzsehpyfimb\"},\"host\":\"smtp.gmail.com\"}}}"}}
+[debug] [2024-05-08T04:44:56.339Z] [runtime-status] [5062] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"4.9.0","resolution":"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-functions/lib/v1/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[runtime-status] [5062] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"4.9.0\",\"resolution\":\"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-functions/lib/v1/index.js\"}}"}}
+[debug] [2024-05-08T04:44:56.339Z] [runtime-status] [5062] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.9.0","resolution":"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-functions/lib/v1/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[runtime-status] [5062] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.9.0\",\"resolution\":\"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-functions/lib/v1/index.js\"}"}}
+[debug] [2024-05-08T04:44:56.340Z] [runtime-status] [5062] Resolved module firebase-admin {"declared":true,"installed":true,"version":"11.11.1","resolution":"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[runtime-status] [5062] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"11.11.1\",\"resolution\":\"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2024-05-08T04:44:56.341Z] [runtime-status] [5062] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.9.0","resolution":"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-functions/lib/v1/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[runtime-status] [5062] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.9.0\",\"resolution\":\"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-functions/lib/v1/index.js\"}"}}
+[debug] [2024-05-08T04:44:56.341Z] [runtime-status] [5062] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"11.11.1","resolution":"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[runtime-status] [5062] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"11.11.1\",\"resolution\":\"/Users/jee/Desktop/Motorix/motorix/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2024-05-08T04:44:56.492Z] [runtime-status] [5062] Functions runtime initialized. {"cwd":"/Users/jee/Desktop/Motorix/motorix/functions","node_version":"20.12.2"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[runtime-status] [5062] Functions runtime initialized. {\"cwd\":\"/Users/jee/Desktop/Motorix/motorix/functions\",\"node_version\":\"20.12.2\"}"}}
+[debug] [2024-05-08T04:44:56.492Z] [runtime-status] [5062] Listening to port: /var/folders/qf/0m9z8j2j29n6n46wkm203n8m0000gn/T/fire_emu_d5e90fccfe27f04e.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[runtime-status] [5062] Listening to port: /var/folders/qf/0m9z8j2j29n6n46wkm203n8m0000gn/T/fire_emu_d5e90fccfe27f04e.sock"}}
+[debug] [2024-05-08T04:44:56.505Z] [worker-us-central1-sendMail-863eeede-ac01-4469-8dff-c8aa414deba6]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[worker-us-central1-sendMail-863eeede-ac01-4469-8dff-c8aa414deba6]: IDLE"}}
+[debug] [2024-05-08T04:44:56.505Z] [worker-pool] submitRequest(triggerId=us-central1-sendMail) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-sendMail)"}}
+[info] i  functions: Beginning execution of "us-central1-sendMail" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"Beginning execution of \"us-central1-sendMail\""}}
+[debug] [2024-05-08T04:44:56.506Z] [worker-us-central1-sendMail-863eeede-ac01-4469-8dff-c8aa414deba6]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[worker-us-central1-sendMail-863eeede-ac01-4469-8dff-c8aa414deba6]: BUSY"}}
+[warn] ⚠  Google API requested!
+   - URL: "https://oauth2.googleapis.com/token"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"Google API requested!\n   - URL: \"https://oauth2.googleapis.com/token\"\n   - Be careful, this may be a production service."}}
+[debug] [2024-05-08T04:44:57.979Z] [runtime-status] [5062] initializeApp(DEFAULT) {"credential":{"implicit":false,"projectId":"motorix-28ab2","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDqoNC9vXOp+SQK\n7th1j4zTwQdwWbBptHLhq9D7dtGmhSr/R+xabVZ07lhcg5EHWt2ha6QB2WvYjjdA\nK/BxxUx4ymWaDdx7Xm7ErcIg3khwC8QVMthzdRhMnC0mjuRmB/5FLu0bf+XDwFIx\nBuNRusTitpR6ZNDRMcLDLrRtNa6/D4cK8Xlo9N4lz4jkfygu+YMry7bVatpNsHJq\nJf2ifWtrb7SRSxdPiCt78KWRzXc+SIDOqHMYxgUodprD0K3YvCw34Q3ae/ri1+0Z\nOBOhGc38P7PA3Dcyre/NNW81OJaRXcEesbemjIS/GnPVJiPpwOFFTE3Iqahce8wW\ngt1RVwhDAgMBAAECggEAWcGheSRzje+IUUJjvj1nI06xuNImwZlNZXVkIf6nXyuM\nclIiYcl4DI1tch7GqWiiZnEWMbrqHdLx4fOtLOjMQ10yFwf8c5mBiG3sWMSQM4Tc\nwztLQIfn/s60Gw8I4ttl8zNrc1yvGf6FssmuxoJLdWthS50roQuHNUG1th2WNvJP\nFzBBApw5ifdIKh50QmBo3RCEjenPtF52bLybPHyn4JHJ+iB97JMEGuKUjGQP+SK5\n9ebBJFW46+xNj9xB+mChBIX6YDwEZoxgERFlB/PYseqJn99u5BRy/EJAmcw6hojm\nnm7iWT2LxWvNOupRndOhpL+yv3KRZQWMOKmfGp/BmQKBgQD9zX5Ro5DshQB01/wQ\niiCXmD2YDqQpwsoWVkpRIrwAHmbf547ndNhPsF67FoUnI4sN6+BDWQp7DvEhgUMV\nsBrumMRcs5vlqy23kLyqpvWcQTJvwkM8fKy0oCkJHlA44YigaFZuEE36K/MyMaHT\ncbUbUsNe8f9Bt7p5/Je/CUM0LQKBgQDsqNM/whHGP/g3lD2XqTX4em6kwsUKEh9W\n07uSGkebv/PXblp0+Moif0bPQmQINO8vgdywlIqbEFRFqYCTtd9XCQANGYkmcAgq\nGj1JCzSJE/eCugpS6IkbuAcm2iykxJ4mco+E2asqcuQU8BgANX+U486g0JY8X80F\nIOohVQbELwKBgCYTdif5Sfyx12ewH3i7wDf99v+g8q/xMTA4sd2KQHokFXrx2laP\nCQSriQq4TjGY+3uTL4nrCc98ZmCIa/ANA31YHd1qdLD4BVvMswFHGwHeJhruIfgp\nHB/dB0r+6TofW8f030KT357wiQO2vnhiTrFSsUzFMW5Cig9S/dEDKrnhAoGARCJG\nz3BcFauNFtNC+ErrEuKMwDqi58dX5nOG6QVP4HNfDILk4BBQgaYLCNigXAyBYDgP\nBXd+gC4vVO776YrPBgu9TAgyCDLw5s4vHrxvH5f0BlrxZfU0pBpTVMgzWiyRK5iH\n4UOZl9sD91M4VbcRSBheAMaMuk0KhZN4VKhaDlkCgYEA+Suw+41inW4SXsOwmKws\nN1T7RJBygv/keQ04wp1dNGvwxoEJDWVhp34sw0sAvkvQ744ff9uxO0id+u6duuiD\nndRTMVwlUupciO+5aO6HqtbOW+EoTT+r44EhcKCbrxZjLXv0ryalybsOBhdmaT4Y\nAHNKjz5/AMKtpGrD4hbuIa8=\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-t8o4d@motorix-28ab2.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[runtime-status] [5062] initializeApp(DEFAULT) {\"credential\":{\"implicit\":false,\"projectId\":\"motorix-28ab2\",\"privateKey\":\"-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDqoNC9vXOp+SQK\\n7th1j4zTwQdwWbBptHLhq9D7dtGmhSr/R+xabVZ07lhcg5EHWt2ha6QB2WvYjjdA\\nK/BxxUx4ymWaDdx7Xm7ErcIg3khwC8QVMthzdRhMnC0mjuRmB/5FLu0bf+XDwFIx\\nBuNRusTitpR6ZNDRMcLDLrRtNa6/D4cK8Xlo9N4lz4jkfygu+YMry7bVatpNsHJq\\nJf2ifWtrb7SRSxdPiCt78KWRzXc+SIDOqHMYxgUodprD0K3YvCw34Q3ae/ri1+0Z\\nOBOhGc38P7PA3Dcyre/NNW81OJaRXcEesbemjIS/GnPVJiPpwOFFTE3Iqahce8wW\\ngt1RVwhDAgMBAAECggEAWcGheSRzje+IUUJjvj1nI06xuNImwZlNZXVkIf6nXyuM\\nclIiYcl4DI1tch7GqWiiZnEWMbrqHdLx4fOtLOjMQ10yFwf8c5mBiG3sWMSQM4Tc\\nwztLQIfn/s60Gw8I4ttl8zNrc1yvGf6FssmuxoJLdWthS50roQuHNUG1th2WNvJP\\nFzBBApw5ifdIKh50QmBo3RCEjenPtF52bLybPHyn4JHJ+iB97JMEGuKUjGQP+SK5\\n9ebBJFW46+xNj9xB+mChBIX6YDwEZoxgERFlB/PYseqJn99u5BRy/EJAmcw6hojm\\nnm7iWT2LxWvNOupRndOhpL+yv3KRZQWMOKmfGp/BmQKBgQD9zX5Ro5DshQB01/wQ\\niiCXmD2YDqQpwsoWVkpRIrwAHmbf547ndNhPsF67FoUnI4sN6+BDWQp7DvEhgUMV\\nsBrumMRcs5vlqy23kLyqpvWcQTJvwkM8fKy0oCkJHlA44YigaFZuEE36K/MyMaHT\\ncbUbUsNe8f9Bt7p5/Je/CUM0LQKBgQDsqNM/whHGP/g3lD2XqTX4em6kwsUKEh9W\\n07uSGkebv/PXblp0+Moif0bPQmQINO8vgdywlIqbEFRFqYCTtd9XCQANGYkmcAgq\\nGj1JCzSJE/eCugpS6IkbuAcm2iykxJ4mco+E2asqcuQU8BgANX+U486g0JY8X80F\\nIOohVQbELwKBgCYTdif5Sfyx12ewH3i7wDf99v+g8q/xMTA4sd2KQHokFXrx2laP\\nCQSriQq4TjGY+3uTL4nrCc98ZmCIa/ANA31YHd1qdLD4BVvMswFHGwHeJhruIfgp\\nHB/dB0r+6TofW8f030KT357wiQO2vnhiTrFSsUzFMW5Cig9S/dEDKrnhAoGARCJG\\nz3BcFauNFtNC+ErrEuKMwDqi58dX5nOG6QVP4HNfDILk4BBQgaYLCNigXAyBYDgP\\nBXd+gC4vVO776YrPBgu9TAgyCDLw5s4vHrxvH5f0BlrxZfU0pBpTVMgzWiyRK5iH\\n4UOZl9sD91M4VbcRSBheAMaMuk0KhZN4VKhaDlkCgYEA+Suw+41inW4SXsOwmKws\\nN1T7RJBygv/keQ04wp1dNGvwxoEJDWVhp34sw0sAvkvQ744ff9uxO0id+u6duuiD\\nndRTMVwlUupciO+5aO6HqtbOW+EoTT+r44EhcKCbrxZjLXv0ryalybsOBhdmaT4Y\\nAHNKjz5/AMKtpGrD4hbuIa8=\\n-----END PRIVATE KEY-----\\n\",\"clientEmail\":\"firebase-adminsdk-t8o4d@motorix-28ab2.iam.gserviceaccount.com\",\"httpClient\":{\"retry\":{\"maxRetries\":4,\"statusCodes\":[503],\"ioErrorCodes\":[\"ECONNRESET\",\"ETIMEDOUT\"],\"backOffFactor\":0.5,\"maxDelayInMillis\":60000}}}}"}}
+[warn] ⚠  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"The Cloud Firestore emulator is not running, so calls to Firestore will affect production."}}
+[debug] [2024-05-08T04:44:59.525Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-sendMail" in 3019.668834ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"Finished \"us-central1-sendMail\" in 3019.668834ms"}}
+[debug] [2024-05-08T04:44:59.526Z] [worker-us-central1-sendMail-863eeede-ac01-4469-8dff-c8aa414deba6]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[worker-us-central1-sendMail-863eeede-ac01-4469-8dff-c8aa414deba6]: IDLE"}}
+[debug] [2024-05-08T04:44:59.526Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2024-05-08T04:44:59.526Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2024-05-08T04:44:59.526Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2024-05-08T09:07:08.523Z] File /Users/jee/Desktop/Motorix/motorix/functions/index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/jee/Desktop/Motorix/motorix/functions/index.js changed, reloading triggers"}}
+[debug] [2024-05-08T09:07:09.533Z] Validating nodejs source
+[warn] ⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] ⚠  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2024-05-08T09:07:10.389Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@google-cloud/secret-manager": "^5.5.0",
+    "cors": "^2.8.5",
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1",
+    "nodemailer": "^6.9.13"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-05-08T09:07:10.389Z] Building nodejs source
+[debug] [2024-05-08T09:07:10.389Z] Failed to find version of module node: reached end of search path /Users/jee/Desktop/Motorix/motorix/functions/node_modules
+[info] ✔  functions: Using node@20 from host. 
+[debug] [2024-05-08T09:07:10.391Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-05-08T09:07:10.395Z] Found firebase-functions binary at '/Users/jee/Desktop/Motorix/motorix/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8115
+
+[debug] [2024-05-08T09:07:10.979Z] Got response from /__/functions.yaml {"endpoints":{"sendMail":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"sendMail"},"verifyCode":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"verifyCode"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] ✔  functions: Loaded functions definitions from source: sendMail, verifyCode. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: sendMail, verifyCode."}}
+[debug] [2024-05-08T09:07:15.996Z] [worker-pool] Shutting down IDLE worker (us-central1-sendMail) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-sendMail)"}}
+[debug] [2024-05-08T09:07:15.996Z] [worker-us-central1-sendMail-863eeede-ac01-4469-8dff-c8aa414deba6]: FINISHING {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[worker-us-central1-sendMail-863eeede-ac01-4469-8dff-c8aa414deba6]: FINISHING"}}
+[debug] [2024-05-08T09:07:16.000Z] [worker-us-central1-sendMail-863eeede-ac01-4469-8dff-c8aa414deba6]: exited {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[worker-us-central1-sendMail-863eeede-ac01-4469-8dff-c8aa414deba6]: exited"}}
+[debug] [2024-05-08T09:07:16.000Z] [worker-us-central1-sendMail-863eeede-ac01-4469-8dff-c8aa414deba6]: FINISHED {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-sendMail"},"extension":{},"message":"[worker-us-central1-sendMail-863eeede-ac01-4469-8dff-c8aa414deba6]: FINISHED"}}
+[debug] [2024-05-08T09:07:46.847Z] File /Users/jee/Desktop/Motorix/motorix/functions/index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/jee/Desktop/Motorix/motorix/functions/index.js changed, reloading triggers"}}
+[debug] [2024-05-08T09:07:47.851Z] Validating nodejs source
+[warn] ⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] ⚠  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2024-05-08T09:07:48.415Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@google-cloud/secret-manager": "^5.5.0",
+    "cors": "^2.8.5",
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1",
+    "nodemailer": "^6.9.13"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-05-08T09:07:48.415Z] Building nodejs source
+[debug] [2024-05-08T09:07:48.415Z] Failed to find version of module node: reached end of search path /Users/jee/Desktop/Motorix/motorix/functions/node_modules
+[info] ✔  functions: Using node@20 from host. 
+[debug] [2024-05-08T09:07:48.416Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-05-08T09:07:48.417Z] Found firebase-functions binary at '/Users/jee/Desktop/Motorix/motorix/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8673
+
+[debug] [2024-05-08T09:07:48.899Z] Got response from /__/functions.yaml {"endpoints":{"sendMail":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"sendMail"},"verifyCode":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"verifyCode"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] ✔  functions: Loaded functions definitions from source: sendMail, verifyCode. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: sendMail, verifyCode."}}
+[debug] [2024-05-08T09:15:41.425Z] File /Users/jee/Desktop/Motorix/motorix/functions/index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/jee/Desktop/Motorix/motorix/functions/index.js changed, reloading triggers"}}
+[debug] [2024-05-08T09:15:42.429Z] Validating nodejs source
+[warn] ⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] ⚠  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2024-05-08T09:15:43.091Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@google-cloud/secret-manager": "^5.5.0",
+    "cors": "^2.8.5",
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1",
+    "nodemailer": "^6.9.13"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-05-08T09:15:43.092Z] Building nodejs source
+[debug] [2024-05-08T09:15:43.092Z] Failed to find version of module node: reached end of search path /Users/jee/Desktop/Motorix/motorix/functions/node_modules
+[info] ✔  functions: Using node@20 from host. 
+[debug] [2024-05-08T09:15:43.092Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-05-08T09:15:43.094Z] Found firebase-functions binary at '/Users/jee/Desktop/Motorix/motorix/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8548
+
+[debug] [2024-05-08T09:15:43.852Z] Got response from /__/functions.yaml {"endpoints":{"sendMail":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"sendMail"},"verifyCode":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"verifyCode"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] ✔  functions: Loaded functions definitions from source: sendMail, verifyCode. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: sendMail, verifyCode."}}
+[debug] [2024-05-08T09:16:11.880Z] File /Users/jee/Desktop/Motorix/motorix/functions/index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/jee/Desktop/Motorix/motorix/functions/index.js changed, reloading triggers"}}
+[debug] [2024-05-08T09:16:12.882Z] Validating nodejs source
+[warn] ⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] ⚠  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2024-05-08T09:16:13.495Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@google-cloud/secret-manager": "^5.5.0",
+    "cors": "^2.8.5",
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1",
+    "nodemailer": "^6.9.13"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-05-08T09:16:13.495Z] Building nodejs source
+[debug] [2024-05-08T09:16:13.495Z] Failed to find version of module node: reached end of search path /Users/jee/Desktop/Motorix/motorix/functions/node_modules
+[info] ✔  functions: Using node@20 from host. 
+[debug] [2024-05-08T09:16:13.496Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-05-08T09:16:13.497Z] Found firebase-functions binary at '/Users/jee/Desktop/Motorix/motorix/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8014
+
+[debug] [2024-05-08T09:16:14.171Z] Got response from /__/functions.yaml {"endpoints":{"sendMail":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"sendMail"},"verifyCode":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"verifyCode"}},"specVersion":"v1alpha1","requiredAPIs":[]}

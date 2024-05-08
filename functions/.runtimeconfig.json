@@ -1,0 +1,9 @@
+{
+  "nodemailer": {
+    "email": {
+      "user": "parkjeesung77@gmail.com",
+      "pass": "hzoecuzsehpyfimb"
+    },
+    "host": "smtp.gmail.com"
+  }
+}

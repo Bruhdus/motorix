@@ -3,6 +3,7 @@ import { useAuth } from "../firebase/AuthContext";
 import { useNavigate } from 'react-router-dom';
 import googleImg from '../image/googleIcon.png'
 import { primaryColor, primaryButton } from '../style/AppStyle';
+import { Spinner } from 'react-bootstrap';
 
 const SignIn = () => {
     const navigate = useNavigate();
@@ -61,7 +62,7 @@ const SignIn = () => {
             paddingLeft: '20px',
             paddingRight: '20px'
         }}>
-            <div className="card shadow-lg" style={{ maxWidth: '400px', width: '100%' }}>
+            <div className="card shadow-lg" style={{ maxWidth: '500px', width: '100%' }}>
                 <div className="card-body">
                     <h3 className="card-title text-center mb-4">Sign In</h3>
 
@@ -81,7 +82,10 @@ const SignIn = () => {
                         </div>
                         <div className="d-grid">
                             <button style={primaryButton} type="submit" disabled={loading} className="btn mt-4">
-                                Continue
+                                {loading ? <>
+                                    <Spinner animation="border" size='sm' />
+                                    <span className='ms-2'>Signing In</span>
+                                </> : 'Sign In'}
                             </button>
                         </div>
                     </form>

@@ -9,6 +9,7 @@ import SignIn from './components/SignIn'
 import Profile from './components/Profile'
 import PostFlat from './components/PostFlat'
 import NotFound from './components/NotFound'
+import EmailValidation from './components/EmailValidation'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path="/signin" element={<SignIn />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/postflat" element={<PostFlat />} />
+              <Route path="/emailvalidation" element={<EmailValidation />} />
             </Routes>
           </div>
         </AuthProvider>
