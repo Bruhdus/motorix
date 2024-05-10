@@ -144,6 +144,7 @@ const ProfilePage = () => {
             <Toast className="bg-success" aria-live="assertive" aria-atomic="true" style={{ color: 'white', position: 'fixed', bottom: '20px', right: '20px', zIndex: '1000', wordWrap: 'break-word' }} show={showSuccessToast} onClose={() => setShowSuccessToast(false)}>
                 <div className="d-flex">
                     <Toast.Body>Password successfully updated! 👍</Toast.Body>
+                    {/* I think this close button does not work */}
                     <button type="button" className="btn-close me-2 m-auto" aria-label="Close"></button>
                 </div>
             </Toast>
