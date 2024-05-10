@@ -5,21 +5,21 @@ import { useNavigate } from 'react-router-dom';
 import { primaryColor, primaryButton } from '../style/AppStyle';
 import { addUser } from "../firebase/database/FirestoreFunctions";
 import { Spinner, Alert, Modal } from 'react-bootstrap';
-import { cloudFunctions } from '../firebase/firebaseSetup';
 import axios from 'axios';
 
 
 const SignUp = () => {
     const navigate = useNavigate();
+    const { signup, currentUser } = useAuth();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
-    const { signup, currentUser } = useAuth();
-    const [showEnterCodeCard, setShowEnterCodeCard] = useState(true);
+    const [showEnterCodeCard, setShowEnterCodeCard] = useState(false);
     const [sixDigitInput, setSixDigitInput] = useState('');
 
 
@@ -42,22 +42,35 @@ const SignUp = () => {
         return isValid
     }
 
+    const handleSendCode = async (event) => {
+        event.preventDefault()
+        try {
+            setErrorMessage("")
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/sendMail?email=${email}`)
+            if (response.status === 200) {
+                // show toast or alert that verificication code has been resent
+            }
+        } catch (error) {
+
+        }
+    }
+
     const handleVerifyCodeSubmit = async (event) => {
         event.preventDefault()
         setLoading(true)
         try {
             setErrorMessage("")
-            axios.get(`${process.env.REACT_APP_SERVER_URL}/`)
-                .then(response => {
-                    console.log(response.data)
-                })
-                .catch(error => {
-                    console.log(error)
-                })
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/vc?email=${email}&code=${sixDigitInput}`)
+            console.log(response.data)
+            await signup(email, password, firstName + ' ' + lastName)
+            await addUser(email, { firstName: firstName, lastName: lastName, email: email })
+            navigate("/")
         } catch (error) {
-            console.log(error)
+            console.log("error: " + error.response.data)
         }
+        setLoading(false)
     }
+    
 
     const handleSignUpSubmit = async (event) => {
         event.preventDefault()
@@ -66,27 +79,11 @@ const SignUp = () => {
         if (validatePassword()) {
             try {
                 setErrorMessage("")
-                // await signup(email, password, firstName + ' ' + lastName)
-                // await addUser(email, { firstName: firstName, lastName: lastName, email: email })
-                // navigate('/emailvalidation')
-                axios.get(`${process.env.REACT_APP_SERVER_URL}/sendMail?email=${email}`)
-                    .then(response => {
-                        console.log(response.data)
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    })
+                await axios.get(`${process.env.REACT_APP_SERVER_URL}/sendMail?email=${email}`)
+                setShowEnterCodeCard(true)
             } catch (error) {
-                if (error instanceof FirebaseError) {
-                    if (error.code === 'auth/email-already-in-use') {
-                        setErrorMessage("Email already in use")
-                    } else {
-                        setErrorMessage("Failed to create an account")
-                    }
-                } else {
-                    setErrorMessage("Please refresh the page and try again")
-                }
-                console.log(error)
+                console.log(error.response.data)
+                setErrorMessage(error.response.data)
             }
         }
         setLoading(false)
@@ -107,6 +104,11 @@ const SignUp = () => {
                 <div className="card shadow-lg" style={{ maxWidth: '500px', width: '100%' }}>
                     <div className="card-body">
                         <h3 className="card-title text-center mb-4">Enter verification code</h3>
+                        {errorMessage && (
+                            <Alert variant="danger">
+                                {errorMessage}
+                            </Alert>
+                        )}
                         <p>A 6-digit verification code has been sent to your email. Please check your email for the 6-digit code and enter it below.</p>
                         <form onSubmit={handleVerifyCodeSubmit}>
                             <div className="form-group text-start">

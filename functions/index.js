@@ -53,6 +53,16 @@ async function initializeFirestore() {
 }
 
 
+// Function to check if email is already in use
+async function isEmailAlreadyInUse(email) {
+  try {
+    await admin.auth().getUserByEmail(email);
+    return true;
+  } catch (error) {
+    return false
+  }
+}
+
 /**
  * Generates a random verification code.
  * @return {string} The generated verification code.
@@ -72,16 +82,19 @@ exports.sendMail = onRequest(
     {cors: ["localhost:3000"]},
     async (req, res) => {
       const email = req.query.email;
-      const verificationCode = generateVerificationCode();
       const firestore = await initializeFirestore();
+      if (await isEmailAlreadyInUse(email)) {
+        return res.status(409).send("Email already in use");
+      }
 
       // Create a new document in Firestore with verification code
       const docRef = firestore.collection("verificationCodes").doc(email);
+      const verificationCode = generateVerificationCode();
 
       try {
         await docRef.set({
           code: verificationCode,
-          expiryTime: new Date().getTime(),
+          expiryTime: new Date(Date.now() + (5 * 60 * 1000)).getTime(),
         });
 
         const transporter = nodemailer.createTransport({
@@ -103,56 +116,52 @@ exports.sendMail = onRequest(
         };
 
         transporter.sendMail(message);
-        res.status(200).send("Email sent successfully");
+        return res.status(200).send("Email sent successfully");
       } catch (error) {
         if (error.code === "messaging/invalid-argument") {
-          res.status(400).send("Invalid email or verification code");
+          return res.status(400).send("Invalid email");
         } else {
-          res.status(500).send("Internal server error");
+          return res.status(500)
+              .send("Internal server error. Please try again in a few minutes");
         }
       }
     });
 
 
-exports.verifyCode = onRequest(
-  {cors: ["localhost:3000"]},
-  async (req, res) => {
-    const email = req.query.email;
-    const enteredCode = req.query.code;
-    const firestore = initializeFirestore();
+exports.vc = onRequest(
+    {cors: ["localhost:3000"]},
+    async (req, res) => {
+      const email = req.query.email;
+      const enteredCode = req.query.code;
+      const firestore = await initializeFirestore();
 
-    try {
-      // Retrieve verification code document from Firestore
-      firestore.collection("verificationCodes").doc(email).get()
-        .then((doc) => {
-          if (!doc.exists) {
-            return res.status(400).send({error: "Invalid verification code or code expired"});
-          }
+      try {
+        // Retrieve verification code document from Firestore
+        const verificationDoc = await firestore
+            .collection("verificationCodes").doc(email).get();
+        if (!verificationDoc.exists) {
+          return res.status(400)
+              .send("Document doesn't exist");
+        }
 
-          const storedCode = doc.data().code;
-          const expiryTime = doc.data().expiryTime;
+        const storedCode = verificationDoc.data().code;
+        const expiryTime = verificationDoc.data().expiryTime;
+        const currentTime = new Date().getTime()
 
-          // Check code validity and expiry
-          if (enteredCode !== storedCode ||
-              expiryTime < admin.firestore.Timestamp.now().toMillis()) {
-            return {error: "Invalid verification code or code expired"};
-          }
+        // Check code validity and expiry
+        if (currentTime > expiryTime) {
+          return res.status(400).send("Code expired");
+        }
 
-          // Code is valid, delete document and return success
-          return firestore.collection("verificationCodes").doc(email).delete()
-              .then(() => {
-                return {message: "Email verified successfully"};
-              })
-              .catch((error) => {
-                console.error("Error deleting verification code:", error);
-                return {error};
-              });
-        })
-        .catch((error) => {
-          console.error("Error retrieving verification code:", error);
-          return {error};
-        });
-    } catch (error) {
+        if (storedCode !== enteredCode) {
+          return res.status(400).send("Invalid verification code");
+        }
 
-    }
-});
+        // Code is valid, delete document and return success
+        await firestore.collection("verificationCodes").doc(email).delete();
+        return res.status(200).send("Email verified successfully");
+      } catch (error) {
+        return res.status(500)
+            .send("Internal server error. Please try again in a few minutes");
+      }
+    });
