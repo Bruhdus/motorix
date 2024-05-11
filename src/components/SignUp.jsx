@@ -1,12 +1,10 @@
-import { FormEvent, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth } from "../firebase/AuthContext"
-import { FirebaseError } from 'firebase/app';
 import { useNavigate } from 'react-router-dom';
 import { primaryColor, primaryButton } from '../style/AppStyle';
-import { addUser } from "../firebase/database/FirestoreFunctions";
+import { addUser, deleteVerificationDoc } from "../firebase/database/FirestoreFunctions";
 import { Spinner, Alert, Toast } from 'react-bootstrap';
 import axios from 'axios';
-
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -44,6 +42,12 @@ const SignUp = () => {
         }
         console.log(isValid)
         return isValid
+    }
+
+    const isValidEmail = () => {
+        // Regular expression for validating email addresses
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
     }
 
     const handleResendCode = async (event) => {
@@ -87,6 +91,7 @@ const SignUp = () => {
             }
             const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/vc?email=${email}&code=${sixDigitInput}`)
             console.log(response.data)
+            // Once the user email is verified, add the user to the database
             await signup(email, password, firstName + ' ' + lastName)
             await addUser(email, { firstName: firstName, lastName: lastName, email: email })
             navigate("/")
@@ -102,7 +107,7 @@ const SignUp = () => {
         event.preventDefault()
         setLoading(true)
 
-        if (validatePassword()) {
+        if (validatePassword() && isValidEmail()) {
             try {
                 setErrorMessage("")
                 await axios.get(`${process.env.REACT_APP_SERVER_URL}/sendMail?email=${email}`)
@@ -110,6 +115,8 @@ const SignUp = () => {
             } catch (error) {
                 if (error.response.data === "No email provided") {
                     setErrorMessage("Please provide all your details")
+                } else if (error.response.status === 409) {
+                    setErrorMessage("Email already in use")
                 } else if (error.response.status === 400) {
                     setErrorMessage("Something must have bugged out. Please refresh the page")
                 } else {
