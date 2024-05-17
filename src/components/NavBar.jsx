@@ -20,6 +20,9 @@ const NavBar = () => {
                         <a style={navBarText} className="nav-link" href="/postflat">Post Flat</a>
                     </li>
                     <li className="nav-item">
+                        <a style={navBarText} className="nav-link" href="/postcar">Post Car</a>
+                    </li>
+                    <li className="nav-item">
                         <a style={navBarText} className="nav-link" href="/profile">Profile</a>
                     </li>
                 </>
