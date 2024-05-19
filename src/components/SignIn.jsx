@@ -3,7 +3,7 @@ import { useAuth } from "../firebase/AuthContext";
 import { useNavigate } from 'react-router-dom';
 import googleImg from '../image/googleIcon.png'
 import { primaryColor, primaryButton } from '../style/AppStyle';
-import { Spinner } from 'react-bootstrap';
+import { Alert, Spinner } from 'react-bootstrap';
 
 const SignIn = () => {
     const navigate = useNavigate();
@@ -65,9 +65,13 @@ const SignIn = () => {
             <div className="card shadow-lg" style={{ maxWidth: '500px', width: '100%' }}>
                 <div className="card-body">
                     <h3 className="card-title text-center mb-4">Sign In</h3>
+                    {signInError && (
+                        <Alert id="signInError" variant="danger">
+                            Incorrect email/password. Please try again...
+                        </Alert>
+                    )}
 
-                    {signInError && <p style={{ color: 'red' }}>Incorrect email/password. Please try again...</p>}
-                    {tooManyReq && <p style={{ color: 'orange' }}>Too many tries. Please try again later</p>}
+                    {tooManyReq && (<Alert variant="danger">Too many tries. Please try again later</Alert>)}
 
                     <form onSubmit={handleSubmit}>
                         <div className="form-group text-start">
