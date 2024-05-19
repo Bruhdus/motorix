@@ -11,7 +11,7 @@ const SignIn = () => {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [signInError, setSignInError] = useState(false);
-    const [tooManyReq, setTooManyReq] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const { signin, signinWithGoogle, currentUser } = useAuth();
 
     useEffect(() => {
@@ -36,15 +36,24 @@ const SignIn = () => {
         try {
             setLoading(true)
             setSignInError(false)
-            setTooManyReq(false)
-            // Handle the submit
+            setErrorMessage("")
             await signin(email, password)
             setLoading(false)
         } catch (error) {
-            if (error.code === 'auth/invalid-credential') {
+            if (error.code === 'auth/user-not-found') {
                 setSignInError(true)
+                const errorMessage = (
+                    <p>
+                        Sorry it looks like you don't have an account with us. Please{' '}
+                        <a href="/signup">sign up</a> first
+                    </p>);
+                setErrorMessage(errorMessage);
+            } else if (error.code === 'auth/invalid-credential') {
+                setSignInError(true)
+                setErrorMessage("Incorrect email/password. Please try again...")
             } else if (error.code === 'auth/too-many-requests') {
-                setTooManyReq(true)
+                setSignInError(true)
+                setErrorMessage("Too many tries. Please try again later")
             }
             console.log(error)
             setLoading(false)
@@ -67,11 +76,9 @@ const SignIn = () => {
                     <h3 className="card-title text-center mb-4">Sign In</h3>
                     {signInError && (
                         <Alert id="signInError" variant="danger">
-                            Incorrect email/password. Please try again...
+                            {errorMessage}
                         </Alert>
                     )}
-
-                    {tooManyReq && (<Alert variant="danger">Too many tries. Please try again later</Alert>)}
 
                     <form onSubmit={handleSubmit}>
                         <div className="form-group text-start">

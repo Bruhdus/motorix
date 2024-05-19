@@ -1,9 +1,12 @@
-describe('Sign In Functionality', () => {
+import sinon from 'sinon';
+const { MailSlurp } = require('mailslurp-client');
+
+describe('Nonexisting user sign in functionality', () => {
     beforeEach(() => {
         cy.visit('/signin'); // Replace '/signin' with the actual route for your Sign In page
     });
 
-    it('should render sign in form elements', () => {
+    it('Check all elements render', () => {
         // Assert email input field exists and is visible
         cy.get('#email').should('be.visible');
 
@@ -14,44 +17,34 @@ describe('Sign In Functionality', () => {
         cy.get('button[type="submit"]').should('be.visible');
     });
 
-    it('should validate email input', () => {
-        // Type an invalid email
-        cy.get('#email').type('invalid_email');
-
-        // Submit the form
+    it('Signing in with no account', () => {
+        cy.get('#email').type('email@gmail.com');
+        cy.get('#password').type("111111")
         cy.get('button[type="submit"]').click();
-
-        // Assert an error message is displayed (implementation specific)
-        cy.get('.error-message').should('be.visible'); // Replace with your error message element selector
+        cy.get('#signInError').should('be.visible');
+        cy.get('#signInError').should('have.text', "Sorry it looks like you don't have an account with us. Please sign up first");
+        cy.contains('a', 'sign up').click();
+        cy.url().should('include', '/signup');
     });
+});
 
-    it('should validate password input', () => {
-        // Type an email address
-        cy.get('#email').type('test@example.com');
+describe('Sign up user', () => {
+    let mailslurp;
+    let inbox;
+    before(async () => {
+        cy.visit('/signup');
+        mailslurp = new MailSlurp({ apiKey: Cypress.env('CYPRESS_MAILSLURP_API_KEY') });
+        inbox = await mailslurp.getInbox('5b8a22ae-6623-4a33-8a7c-ab56bd5d19f3');
+    })
 
-        // Type a short password
-        cy.get('#password').type('short');
-
-        // Submit the form
+    it('Sign up new user', async () => {
+        cy.get('#firstName').type('user1');
+        cy.get('#lastName').type('test');
+        cy.get('#email').type(String(inbox.emailAddress));
+        cy.get('#password').type('111111');
+        cy.get('#confirmPassword').type('111111');
         cy.get('button[type="submit"]').click();
+        const mail = await mailslurp.waitForLatestEmail(inbox.id, 30_000);
 
-        // Assert an error message is displayed (implementation specific)
-        cy.get('.error-message').should('be.visible'); // Replace with your error message element selector
-    });
-
-    it('should handle successful sign in (mock required)', () => {
-        // Mock successful sign in using stubs or other methods (implementation specific)
-
-        // Type a valid email and password
-        cy.get('#email').type('test@example.com');
-        cy.get('#password').type('valid_password');
-
-        // Submit the form
-        cy.get('button[type="submit"]').click();
-
-        // Assert redirection to a different page (likely home) after successful sign in
-        cy.url().should('include', '/'); // Replace with the expected URL after sign in
-    });
-
-    // Add more test cases to cover Google Sign In, error handling for different scenarios (too many requests, etc.)
+    })
 });

@@ -46,6 +46,9 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^13.9.0"
+    "cypress": "^13.9.0",
+    "cypress-mailslurp": "^1.10.0",
+    "file-loader": "^6.2.0",
+    "sinon": "^18.0.0"
   }
 }

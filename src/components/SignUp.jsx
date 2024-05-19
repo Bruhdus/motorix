@@ -17,9 +17,8 @@ const SignUp = () => {
 
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
-    const [showEnterCodeCard, setShowEnterCodeCard] = useState(false);
-    const [sixDigitInput, setSixDigitInput] = useState('');
-    const [showCodeResentToast, setShowCodeResentToast] = useState(false);
+    const [showVerifyLinkCard, setShowVerifyLinkCard] = useState(true);
+    const [showLinkSentToast, setShowLinkSentToast] = useState(false);
 
     useEffect(() => {
         if (currentUser != null) {
@@ -27,11 +26,6 @@ const SignUp = () => {
         }
     }, [currentUser])
 
-    useEffect(() => {
-        if (!firstName || !lastName || !email || !password || !confirmPassword) {
-            setShowEnterCodeCard(false)
-        }
-    }, [showEnterCodeCard])
 
     const validatePassword = () => {
         let isValid = true
@@ -47,61 +41,21 @@ const SignUp = () => {
     const isValidEmail = () => {
         // Regular expression for validating email addresses
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-
-    const handleResendCode = async (event) => {
-        event.preventDefault()
-        try {
-            if (!email) {
-                setShowEnterCodeCard(false)
-                return
-            }
-            setErrorMessage("")
-            await axios.get(`${process.env.REACT_APP_SERVER_URL}/sendMail?email=${email}`)
-            setShowCodeResentToast(true);
-        } catch (error) {
-            if (error.response.data === "No email provided") {
-                setShowEnterCodeCard(false)
-            } else if (error.response.status === 400) {
-                setErrorMessage("Could not resend verification code. Please refresh the page")
-            } else {
-                setErrorMessage("Our servers are busy at the moment please wait a moment and try again")
-            }
+        if (!emailRegex.test(email)) {
+            setErrorMessage('Invalid email')
+            return false
         }
+        return true
     }
 
     const handleHideToast = () => {
-        setShowCodeResentToast(false);
+        setShowLinkSentToast(false);
     };
 
-
-    const handleVerifyCodeSubmit = async (event) => {
-        event.preventDefault()
-        setLoading(true)
-        try {
-            setErrorMessage("")
-            if (!email) {
-                setShowEnterCodeCard(false)
-                return
-            }
-            if (!sixDigitInput) {
-                setErrorMessage("Please enter your verification code")
-                return
-            }
-            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/vc?email=${email}&code=${sixDigitInput}`)
-            console.log(response.data)
-            // Once the user email is verified, add the user to the database
-            await signup(email, password, firstName + ' ' + lastName)
-            await addUser(email, { firstName: firstName, lastName: lastName, email: email })
-            navigate("/")
-        } catch (error) {
-            console.log("error: " + error.response.data)
-            setErrorMessage(error.response.data)
-        }
-        setLoading(false)
+    const resendVerificationLink = () => {
+        // TODO: implement resending the verification link
+        setShowLinkSentToast(true)
     }
-
 
     const handleSignUpSubmit = async (event) => {
         event.preventDefault()
@@ -110,8 +64,8 @@ const SignUp = () => {
         if (validatePassword() && isValidEmail()) {
             try {
                 setErrorMessage("")
-                await axios.get(`${process.env.REACT_APP_SERVER_URL}/sendMail?email=${email}`)
-                setShowEnterCodeCard(true)
+                await signup(email, password, firstName + ' ' + lastName)
+                setShowVerifyLinkCard(true)
             } catch (error) {
                 if (error.response.data === "No email provided") {
                     setErrorMessage("Please provide all your details")
@@ -138,36 +92,17 @@ const SignUp = () => {
             paddingLeft: '20px',
             paddingRight: '20px'
         }}>
-            {showEnterCodeCard ?
+            {showVerifyLinkCard ?
                 <div className="card shadow-lg" style={{ maxWidth: '500px', width: '100%' }}>
                     <div className="card-body">
-                        <h3 className="card-title text-center mb-4">Enter verification code</h3>
-                        {errorMessage && (
-                            <Alert variant="danger">
-                                {errorMessage}
-                            </Alert>
-                        )}
-                        <p>A 6-digit verification code has been sent to your email. Please check your email for the 6-digit code and enter it below.</p>
-                        <form onSubmit={handleVerifyCodeSubmit}>
-                            <div className="form-group text-start">
-                                <input type="text" className="form-control" placeholder="Enter code" id="sixDigitInput" minLength={6} maxLength={6}
-                                    value={sixDigitInput} onChange={(event) => setSixDigitInput(event.target.value)} required />
-                            </div>
-                            <div className='d-grid'>
-                                <button style={primaryButton} type="submit" disabled={loading} className="btn mt-2">
-                                    {loading ? <>
-                                        <Spinner animation='border' size='sm' />
-                                        <span className='ms-2'>Verifying code</span>
-                                    </> : 'Verify code'}
-                                </button>
-                            </div>
-                        </form>
-                        <button style={{ color: primaryColor }} className="btn mt-2" onClick={handleResendCode}>Resend code</button>
+                        <h3 className="card-title text-center mb-4">Verify your account</h3>
+                        <p>A verification link has been sent to your email. Please click the link to verify your email. You must verify your account before signing in.</p>
+                        <button onClick={resendVerificationLink} style={primaryButton} className='btn'>Resend link</button>
                     </div>
                     <div className="position-fixed bottom-0 end-0 p-3">
-                        <Toast show={showCodeResentToast} onClose={handleHideToast} aria-live="assertive" aria-atomic="true">
+                        <Toast show={showLinkSentToast} onClose={handleHideToast} aria-live="assertive" aria-atomic="true">
                             <div className="d-flex">
-                                <Toast.Body>Verification code resent 🙂</Toast.Body>
+                                <Toast.Body>Verification link resent 🙂</Toast.Body>
                                 <button type="button" className="btn-close me-2 m-auto" onClick={handleHideToast} aria-label="Close"></button>
                             </div>
                         </Toast>
