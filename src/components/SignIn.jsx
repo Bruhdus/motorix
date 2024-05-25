@@ -15,10 +15,12 @@ const SignIn = () => {
     const { signin, signinWithGoogle, currentUser } = useAuth();
 
     useEffect(() => {
-        if (currentUser != null) {
+        if (currentUser && currentUser.emailVerified === false) {
+            navigate('/emailvalidation')
+        } else if (currentUser) {
             navigate('/');
         }
-    }, [currentUser, navigate])
+    }, [currentUser])
 
     const signInWithGoogle = async () => {
         try {

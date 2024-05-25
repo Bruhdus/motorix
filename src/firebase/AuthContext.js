@@ -31,7 +31,7 @@ export function AuthProvider({ children }) {
     }
 
     async function signin(email, password) {
-        return signInWithEmailAndPassword(auth, email, password)
+        await signInWithEmailAndPassword(auth, email, password)
     }
 
     async function signinWithGoogle() {
@@ -58,6 +58,20 @@ export function AuthProvider({ children }) {
         }
     }
 
+    async function refetchUser() {
+        if (currentUser) {
+            await currentUser.reload()
+                .then(() => {
+                    const user = auth.currentUser
+                    setCurrentUser(user)
+                })
+                .catch(async () => {
+                    await signOut()
+                    //TODO: deleteUser
+                })
+        }
+    }
+
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user)
@@ -75,7 +89,8 @@ export function AuthProvider({ children }) {
         signout,
         resetPassword,
         updatePassword,
-        reauthenticateUser
+        reauthenticateUser,
+        refetchUser,
     }
 
     return (
