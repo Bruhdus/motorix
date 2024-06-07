@@ -26,6 +26,7 @@ const PostCar = () => {
 
     const handleCarUpdate = (updatedData) => {
         setCarData({ ...carData, ...updatedData });
+        console.log(carData)
     };
 
     return (
