@@ -10,7 +10,7 @@ import Profile from './components/Profile'
 import PostFlat from './components/PostFlat'
 import NotFound from './components/NotFound'
 import EmailValidation from './components/EmailValidation'
-import PostCar from './components/PostCar'
+import PostCar from './components/postCar/PostCar'
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
               <Route path="/signin" element={<SignIn />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/postflat" element={<PostFlat />} />
-              <Route path="postcar" element={<PostCar />} />
+              <Route path="/postcar" element={<PostCar />} />
               <Route path="/emailvalidation" element={<EmailValidation />} />
             </Routes>
           </div>

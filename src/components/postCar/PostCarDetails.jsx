@@ -1,26 +1,29 @@
-import { primaryButton, primaryColor } from "../style/AppStyle";
+import { useContext } from "react";
+import { primaryButton, primaryColor } from "../../style/AppStyle";
 
-const PostCarDetails = ({ carData, onCarUpdate }) => {
+const PostCarDetails = ({ handleCarUpdate, handleStateChange }) => {
+    const carDetails = sessionStorage.getItem('carDetails') ? JSON.parse(sessionStorage.getItem('carDetails')) : {};
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        onCarUpdate({ [name]: value }); // Update specific property in parent state
+        // Update specific property in parent state
+        handleCarUpdate({ [name]: value });
     };
 
     return (
         <div className="mt-4">
-            <form className="row g-3 text-start" style={{ fontWeight: "bold" }}>
+            <form className="row g-3 text-start" style={{ fontWeight: "bold" }} onSubmit={() => handleStateChange("ListingDetails")}>
                 <div className="col-md-6">
                     <label htmlFor="makeInput" className="form-label">Make</label>
-                    <input className="form-control" id="makeInput" type="text" name="make" onChange={handleInputChange} required />
+                    <input className="form-control" id="makeInput" type="text" name="make" onChange={handleInputChange} value={carDetails.make} />
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="modelInput" className="form-label">Model</label>
-                    <input className="form-control" id="modelInput" type="text" name="model" onChange={handleInputChange} />
+                    <input className="form-control" id="modelInput" type="text" name="model" onChange={handleInputChange} value={carDetails.model} />
                 </div>
 
                 <div className="col-md-6">
                     <label htmlFor="bodySelect" className="form-label">Body</label>
-                    <select className="form-select" id="bodySelect" name="body" onChange={handleInputChange}>
+                    <select className="form-select" id="bodySelect" name="body" onChange={handleInputChange} value={carDetails.body}>
                         <option value="Other">Other</option>
                         <option value="Convertible">Convertible</option>
                         <option value="Coupe">Coupe</option>
@@ -36,20 +39,20 @@ const PostCarDetails = ({ carData, onCarUpdate }) => {
                     <label htmlFor="seatsInput" className="form-label">Seats
                         <span className="text-muted" style={{ fontSize: '0.7rem' }}> (optional)</span>
                     </label>
-                    <input className="form-control" id="seatsInput" type="number" name="seats" min="0" onChange={handleInputChange} />
+                    <input className="form-control" id="seatsInput" type="number" name="seats" min="0" onChange={handleInputChange} value={carDetails.seats} />
                 </div>
                 <div className="col-md-3">
                     <label htmlFor="doorsInput" className="form-label">Doors
                         <span className="text-muted" style={{ fontSize: '0.7rem' }}> (optional)</span>
                     </label>
-                    <input className="form-control" id="doorsInput" type="number" name="doors" min="0" onChange={handleInputChange} />
+                    <input className="form-control" id="doorsInput" type="number" name="doors" min="0" onChange={handleInputChange} value={carDetails.doors} />
                 </div>
 
                 <div className="col-md-6">
                     <label htmlFor="prevOwnersSelect" className="form-label">Previous owners
                         <span className="text-muted" style={{ fontSize: '0.7rem' }}> (optional)</span>
                     </label>
-                    <select className="form-select" id="prevOwnersSelect" name="previousOwners" onChange={handleInputChange}>
+                    <select className="form-select" id="prevOwnersSelect" name="previousOwners" onChange={handleInputChange} value={carDetails.previousOwners}>
                         <option value="Don't know">Don't know</option>
                         <option value="New">New</option>
                         <option value="1 Owner">1 Owner</option>
@@ -61,36 +64,36 @@ const PostCarDetails = ({ carData, onCarUpdate }) => {
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="yearInput" className="form-label">Year</label>
-                    <input className="form-control" id="yearInput" type="number" name="year" min="0" onChange={handleInputChange} />
+                    <input className="form-control" id="yearInput" type="number" name="year" min="0" onChange={handleInputChange} value={carDetails.year} />
                 </div>
 
                 <div className="col-md-6">
                     <label htmlFor="kilometresInput" className="form-label">Kilometres</label>
-                    <input className="form-control" id="kilometresInput" type="number" name="kilometres" min="0" onChange={handleInputChange} />
+                    <input className="form-control" id="kilometresInput" type="number" name="kilometres" min="0" onChange={handleInputChange} value={carDetails.kilometres} />
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="colourInput" className="form-label">Colour
                         <span className="text-muted" style={{ fontSize: '0.7rem' }}> (optional)</span>
                     </label>
-                    <input className="form-control" id="colourInput" type="text" name="colour" onChange={handleInputChange} />
+                    <input className="form-control" id="colourInput" type="text" name="colour" onChange={handleInputChange} value={carDetails.colour} />
                 </div>
 
                 <div className="col-md-6">
                     <label htmlFor="numberPlateInput" className="form-label">Number plate</label>
-                    <input className="form-control" id="numberPlateInput" type="text" name="numberPlate" onChange={handleInputChange} />
+                    <input className="form-control" id="numberPlateInput" type="text" name="numberPlate" onChange={handleInputChange} value={carDetails.numberPlate} />
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="engineSizeInput" className="form-label">Engine size (cc)
                         <span className="text-muted" style={{ fontSize: '0.7rem' }}> (optional)</span>
                     </label>
-                    <input className="form-control" id="engineSizeInput" type="text" name="engineSize" onChange={handleInputChange} />
+                    <input className="form-control" id="engineSizeInput" type="text" name="engineSize" onChange={handleInputChange} value={carDetails.engineSize} />
                 </div>
 
                 <div className="col-md-6">
                     <label htmlFor="transmissionInput" className="form-label">Transmission
                         <span className="text-muted" style={{ fontSize: '0.7rem' }}> (optional)</span>
                     </label>
-                    <select className="form-select" id="transmissionSelect" name="transmission" onChange={handleInputChange}>
+                    <select className="form-select" id="transmissionSelect" name="transmission" onChange={handleInputChange} value={carDetails.transmission}>
                         <option value="Don't know">Don't know</option>
                         <option value="Manual">Manual</option>
                         <option value="Automatic">Automatic</option>
@@ -99,7 +102,7 @@ const PostCarDetails = ({ carData, onCarUpdate }) => {
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="fuelTypeInput" className="form-label">Fuel type</label>
-                    <select className="form-select" id="fuelTypeSelect" name="fuelType" onChange={handleInputChange}>
+                    <select className="form-select" id="fuelTypeSelect" name="fuelType" onChange={handleInputChange} value={carDetails.fuelType}>
                         <option value="Don't know">Don't know</option>
                         <option value="Petrol">Petrol</option>
                         <option value="Diesel">Diesel</option>
@@ -115,7 +118,7 @@ const PostCarDetails = ({ carData, onCarUpdate }) => {
                     <label htmlFor="cylindersInput" className="form-label">Cylinders
                         <span className="text-muted" style={{ fontSize: '0.7rem' }}> (optional)</span>
                     </label>
-                    <select className="form-select" id="cylindersSelect" name="cylinders" onChange={handleInputChange}>
+                    <select className="form-select" id="cylindersSelect" name="cylinders" onChange={handleInputChange} value={carDetails.cylinders}>
                         <option value="Don't know">Don't know</option>
                         <option value="Rotary">Rotary</option>
                         <option value="4-cylinder">4-cylinder</option>
@@ -129,13 +132,13 @@ const PostCarDetails = ({ carData, onCarUpdate }) => {
                 <div className="col-md-6">
                     <label htmlFor="4wdInput" className="form-label">Drive type</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="driveType" id="2wdRadio" value={"2WD"} onChange={handleInputChange} />
+                        <input class="form-check-input" type="radio" name="driveType" id="2wdRadio" value={"2WD"} onChange={handleInputChange} checked={carDetails.driveType === "2WD"} />
                         <label class="form-check-label" htmlFor="2wdRadio">
                             2WD
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="driveType" id="4wdRadio" value={"4WD"} onChange={handleInputChange} />
+                        <input class="form-check-input" type="radio" name="driveType" id="4wdRadio" value={"4WD"} onChange={handleInputChange} checked={carDetails.driveType === "4WD"} />
                         <label class="form-check-label" htmlFor="4wdRadio">
                             4WD
                         </label>
@@ -146,25 +149,25 @@ const PostCarDetails = ({ carData, onCarUpdate }) => {
                     <label htmlFor="regoInput" className="form-label">Registration expiry
                         <span className="text-muted" style={{ fontSize: '0.7rem' }}> (optional)</span>
                     </label>
-                    <input className="form-control" id="regoInput" type="text" name="regoExpiryDate" onChange={handleInputChange} />
+                    <input className="form-control" id="regoInput" type="text" name="regoExpiryDate" onChange={handleInputChange} value={carDetails.regoExpiryDate} />
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="wofInput" className="form-label">WoF expiry
                         <span className="text-muted" style={{ fontSize: '0.7rem' }}> (optional)</span>
                     </label>
-                    <input className="form-control" id="wofInput" type="text" name="wofExpiryDate" onChange={handleInputChange} />
+                    <input className="form-control" id="wofInput" type="text" name="wofExpiryDate" onChange={handleInputChange} value={carDetails.wofExpiryDate} />
                 </div>
 
                 <div className="col-12">
                     <label htmlFor="orcInput" className="form-label">Are on road costs included?</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="orcIncluded" id="orcYes" value={"2WD"} onChange={handleInputChange} />
+                        <input class="form-check-input" type="radio" name="orcIncluded" id="orcYes" value={"included"} onChange={handleInputChange} checked={carDetails.orcIncluded === "included"} />
                         <label class="form-check-label" htmlFor="orcYes">
                             Yes - The car is sold with a valid WoF, Rego and road user charges
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="orcIncluded" id="orcNo" value={"4WD"} onChange={handleInputChange} />
+                        <input class="form-check-input" type="radio" name="orcIncluded" id="orcNo" value={"not included"} onChange={handleInputChange} checked={carDetails.orcIncluded === "not included"} />
                         <label class="form-check-label" htmlFor="orcNo">
                             No
                         </label>

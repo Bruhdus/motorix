@@ -67,7 +67,8 @@ export function AuthProvider({ children }) {
                 })
                 .catch(async () => {
                     await signOut()
-                    //TODO: deleteUser
+                    //TODO: deleteUser or just restrict 
+                    // access to certain pages until verified
                 })
         }
     }
