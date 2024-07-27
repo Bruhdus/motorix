@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { primaryButton, primaryColor } from "../../style/AppStyle";
 
-const PostCarDetails = ({ handleCarUpdate, handleStateChange }) => {
+const PostCarDetails = ({ handleCarUpdate, handlePageStateChange }) => {
     const carDetails = sessionStorage.getItem('carDetails') ? JSON.parse(sessionStorage.getItem('carDetails')) : {};
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -11,19 +11,20 @@ const PostCarDetails = ({ handleCarUpdate, handleStateChange }) => {
 
     return (
         <div className="mt-4">
-            <form className="row g-3 text-start" style={{ fontWeight: "bold" }} onSubmit={() => handleStateChange("ListingDetails")}>
+            <form className="row g-3 text-start" style={{ fontWeight: "bold" }} onSubmit={() => handlePageStateChange("ListingDetails")} >
                 <div className="col-md-6">
                     <label htmlFor="makeInput" className="form-label">Make</label>
-                    <input className="form-control" id="makeInput" type="text" name="make" onChange={handleInputChange} value={carDetails.make} />
+                    <input className="form-control" id="makeInput" type="text" name="make" onChange={handleInputChange} value={carDetails.make} required />
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="modelInput" className="form-label">Model</label>
-                    <input className="form-control" id="modelInput" type="text" name="model" onChange={handleInputChange} value={carDetails.model} />
+                    <input className="form-control" id="modelInput" type="text" name="model" onChange={handleInputChange} value={carDetails.model} required />
                 </div>
 
                 <div className="col-md-6">
                     <label htmlFor="bodySelect" className="form-label">Body</label>
-                    <select className="form-select" id="bodySelect" name="body" onChange={handleInputChange} value={carDetails.body}>
+                    <select className="form-select" id="bodySelect" name="body" onChange={handleInputChange} value={carDetails.body} required>
+                        <option value=''>Please select an option</option>
                         <option value="Other">Other</option>
                         <option value="Convertible">Convertible</option>
                         <option value="Coupe">Coupe</option>
@@ -64,12 +65,12 @@ const PostCarDetails = ({ handleCarUpdate, handleStateChange }) => {
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="yearInput" className="form-label">Year</label>
-                    <input className="form-control" id="yearInput" type="number" name="year" min="0" onChange={handleInputChange} value={carDetails.year} />
+                    <input className="form-control" id="yearInput" type="number" name="year" min="0" onChange={handleInputChange} value={carDetails.year} required />
                 </div>
 
                 <div className="col-md-6">
                     <label htmlFor="kilometresInput" className="form-label">Kilometres</label>
-                    <input className="form-control" id="kilometresInput" type="number" name="kilometres" min="0" onChange={handleInputChange} value={carDetails.kilometres} />
+                    <input className="form-control" id="kilometresInput" type="number" name="kilometres" min="0" onChange={handleInputChange} value={carDetails.kilometres} required />
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="colourInput" className="form-label">Colour
@@ -80,7 +81,7 @@ const PostCarDetails = ({ handleCarUpdate, handleStateChange }) => {
 
                 <div className="col-md-6">
                     <label htmlFor="numberPlateInput" className="form-label">Number plate</label>
-                    <input className="form-control" id="numberPlateInput" type="text" name="numberPlate" onChange={handleInputChange} value={carDetails.numberPlate} />
+                    <input className="form-control" id="numberPlateInput" type="text" name="numberPlate" onChange={handleInputChange} value={carDetails.numberPlate} required />
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="engineSizeInput" className="form-label">Engine size (cc)
@@ -102,7 +103,8 @@ const PostCarDetails = ({ handleCarUpdate, handleStateChange }) => {
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="fuelTypeInput" className="form-label">Fuel type</label>
-                    <select className="form-select" id="fuelTypeSelect" name="fuelType" onChange={handleInputChange} value={carDetails.fuelType}>
+                    <select className="form-select" id="fuelTypeSelect" name="fuelType" onChange={handleInputChange} value={carDetails.fuelType} required>
+                        <option value=''>Please select an option</option>
                         <option value="Don't know">Don't know</option>
                         <option value="Petrol">Petrol</option>
                         <option value="Diesel">Diesel</option>

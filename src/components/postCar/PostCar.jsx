@@ -26,7 +26,7 @@ const PostCar = () => {
         orcIncluded: undefined
     });
 
-    const handleStateChange = (newState) => {
+    const handlePageStateChange = (newState) => {
         setPageState(newState);
     };
     const handleCarUpdate = (updatedData) => {
@@ -36,23 +36,29 @@ const PostCar = () => {
 
     return (
         <div className="p-5 row justify-content-center">
-            {pageState === 'CarDetails' &&
-                <>
-                    <h2>Vehicle Details</h2>
-                    <div style={{ maxWidth: '800px' }}>
-                        <PostCarDetails handleCarUpdate={handleCarUpdate} handleStateChange={handleStateChange} />
-                    </div>
-                </>
-            }
+            <div style={{ maxWidth: '800px' }}>
+                <div className="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <button type='button'
+                        onClick={() => handlePageStateChange("CarDetails")}
+                        className={pageState === 'CarDetails' ? 'btn active' : 'btn'} >
+                        <h4>Vehicle Details</h4>
+                    </button>
+                    <button type='button'
+                        onClick={() => handlePageStateChange("ListingDetails")}
+                        className={pageState === 'ListingDetails' ? 'btn active' : 'btn'} >
+                        <h4>Listing Details</h4>
+                    </button>
+                </div>
 
-            {pageState === 'ListingDetails' &&
-                <>
-                    <h2>Listing Details</h2>
-                    <div style={{ maxWidth: '800px' }}>
-                        <ListingDetails />
-                    </div>
-                </>
-            }
+                {pageState === 'CarDetails' &&
+                    <PostCarDetails handleCarUpdate={handleCarUpdate} handlePageStateChange={handlePageStateChange} />
+                }
+
+                {pageState === 'ListingDetails' &&
+
+                    <ListingDetails />
+                }
+            </div>
         </div>
     )
 }

@@ -12,18 +12,27 @@
 }
 
 .btn-outline-primary {
-    color: #009FB7;
+    color: #0F52BA;
     background-color: transparent;
-    border-color: #009FB7;
+    border-color: #0F52BA;
 }
 
 .btn-outline-primary:hover {
     color: #fff;
-    background-color: #009FB7;
-    border-color: #009FB7;
+    background-color: #0F52BA;
+    border-color: #0F52BA;
 }
 
 .btn-outline-primary:focus,
 .btn-outline-primary.focus {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.btn.active {
+    color: #0F52BA;
+    border: 0;
+}
+
+.btn {
+    border: 0;
 }
