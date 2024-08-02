@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import PostCarDetails from './PostCarDetails'
+import PostCarDetails from './CarDetails'
 import ListingDetails from './ListingDetails';
 
 const PostCar = () => {
@@ -56,7 +56,7 @@ const PostCar = () => {
 
                 {pageState === 'ListingDetails' &&
 
-                    <ListingDetails />
+                    <ListingDetails handleCarUpdate={handleCarUpdate} handlePageStateChange={handlePageStateChange} />
                 }
             </div>
         </div>
