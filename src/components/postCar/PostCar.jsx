@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import PostCarDetails from './CarDetails'
 import ListingDetails from './ListingDetails';
+import CarPhotos from './CarPhotos';
 
 const PostCar = () => {
     const [pageState, setPageState] = useState('CarDetails');
@@ -40,13 +41,18 @@ const PostCar = () => {
                 <div className="d-grid gap-2 d-md-flex justify-content-md-start">
                     <button type='button'
                         onClick={() => handlePageStateChange("CarDetails")}
-                        className={pageState === 'CarDetails' ? 'btn active' : 'btn'} >
+                        className={`btn ${pageState === 'CarDetails' ? 'active' : 'inactive'}`}>
                         <h4>Vehicle Details</h4>
                     </button>
                     <button type='button'
                         onClick={() => handlePageStateChange("ListingDetails")}
-                        className={pageState === 'ListingDetails' ? 'btn active' : 'btn'} >
+                        className={`btn ${pageState === 'ListingDetails' ? 'active' : 'inactive'}`} >
                         <h4>Listing Details</h4>
+                    </button>
+                    <button type='button'
+                        onClick={() => handlePageStateChange("CarPhotos")}
+                        className={`btn ${pageState === 'CarPhotos' ? 'active' : 'inactive'}`} >
+                        <h4>Photos & Description</h4>
                     </button>
                 </div>
 
@@ -57,6 +63,10 @@ const PostCar = () => {
                 {pageState === 'ListingDetails' &&
 
                     <ListingDetails handleCarUpdate={handleCarUpdate} handlePageStateChange={handlePageStateChange} />
+                }
+
+                {pageState === 'CarPhotos' &&
+                    <CarPhotos handleCarUpdate={handleCarUpdate} handlePageStateChange={handlePageStateChange} />
                 }
             </div>
         </div>

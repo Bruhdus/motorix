@@ -1,4 +1,4 @@
-.post-flat-img {
+.post-car-img {
     position: relative;
 }
 
@@ -6,7 +6,7 @@
     display: none;
 }
 
-.post-flat-img:hover .img-delete-button {
+.post-car-img:hover .img-delete-button {
     /* Display the delete button when hovering over the image container */
     display: block;
 }
@@ -31,6 +31,10 @@
 .btn.active {
     color: #0F52BA;
     border: 0;
+}
+
+.btn.inactive {
+    opacity: 0.5;
 }
 
 .btn {

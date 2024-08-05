@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { primaryButton } from "../../style/AppStyle";
 const ListingDetails = ({ handleCarUpdate, handlePageStateChange }) => {
     const carDetails = sessionStorage.getItem('carDetails') ? JSON.parse(sessionStorage.getItem('carDetails')) : {};
     const handleInputChange = (event) => {
@@ -14,7 +14,7 @@ const ListingDetails = ({ handleCarUpdate, handlePageStateChange }) => {
 
     return (
         <div className="mt-4">
-            <form className="row g-3 text-start" style={{ fontWeight: "bold" }} onSubmit={() => handlePageStateChange("ListingDetails")} >
+            <form className="row g-3 text-start" style={{ fontWeight: "bold" }} onSubmit={() => handlePageStateChange("CarPhotos")} >
                 <div className="col-md-6">
                     <label htmlFor="priceInput" className="form-label">What is your asking price?</label>
                     <input className="form-control" id="priceInput" type="text" name="price" onChange={handleInputChange} value={carDetails.price} required />
@@ -34,6 +34,10 @@ const ListingDetails = ({ handleCarUpdate, handlePageStateChange }) => {
                             </option>
                         ))}
                     </select>
+                </div>
+
+                <div className="col-12">
+                    <button type="submit" className="btn" style={primaryButton}>Go to Photos & Description</button>
                 </div>
             </form>
         </div>
