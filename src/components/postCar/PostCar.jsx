@@ -5,6 +5,7 @@ import CarPhotos from './CarPhotos';
 
 const PostCar = () => {
     const [pageState, setPageState] = useState('CarDetails');
+    const [carImages, setCarImages] = useState([]);
     const [carDetails, setCarDetails] = useState({
         imagePath: undefined,
         make: undefined,
@@ -66,7 +67,12 @@ const PostCar = () => {
                 }
 
                 {pageState === 'CarPhotos' &&
-                    <CarPhotos handleCarUpdate={handleCarUpdate} handlePageStateChange={handlePageStateChange} />
+                    <CarPhotos
+                        handleCarUpdate={handleCarUpdate}
+                        handlePageStateChange={handlePageStateChange}
+                        carImages={carImages}
+                        setCarImages={setCarImages}
+                    />
                 }
             </div>
         </div>

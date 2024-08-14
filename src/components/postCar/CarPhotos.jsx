@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-const CarPhotos = ({ handleCarUpdate, handlePageStateChange }) => {
+const CarPhotos = ({ handleCarUpdate, handlePageStateChange, carImages, setCarImages }) => {
     const carDetails = sessionStorage.getItem('carDetails') ? JSON.parse(sessionStorage.getItem('carDetails')) : {};
-
-    const [carImages, setCarImages] = useState([]);
     const carImageInputRef = useRef(null);
 
     const handleInputChange = (event) => {
